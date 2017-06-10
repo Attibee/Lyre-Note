@@ -1,0 +1,23 @@
+{
+  "name": "@lyre/note",
+  "version": "0.1.0-alpha.0",
+  "description": "Utilities to deal with musical notes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Attibee/Lyre-Note.git"
+  },
+  "keywords": [
+    "music",
+    "note"
+  ],
+  "author": "Anthony Massie",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Attibee/Lyre-Note/issues"
+  },
+  "homepage": "https://github.com/Attibee/Lyre-Note#readme"
+}

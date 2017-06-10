@@ -1,0 +1,110 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\nodejs\\node.exe',
+1 verbose cli   'C:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Users\\ganth\\Programming\\AttibeeJS\\Lyre-Note',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\ganth\AppData\Roaming\npm-cache\@lyre\note\0.1.0-alpha.0\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\ganth\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle @lyre/note@0.1.0-alpha.0~prepublish: @lyre/note@0.1.0-alpha.0
+11 silly lifecycle @lyre/note@0.1.0-alpha.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\ganth\\AppData\\Roaming\\npm-cache\\@lyre\\note\\0.1.0-alpha.0\\package.tgz',
+12 verbose tar pack   'C:\\Users\\ganth\\Programming\\AttibeeJS\\Lyre-Note' ]
+13 verbose tarball C:\Users\ganth\AppData\Roaming\npm-cache\@lyre\note\0.1.0-alpha.0\package.tgz
+14 verbose folder C:\Users\ganth\Programming\AttibeeJS\Lyre-Note
+15 verbose addLocalTarball adding from inside cache C:\Users\ganth\AppData\Roaming\npm-cache\@lyre\note\0.1.0-alpha.0\package.tgz
+16 verbose correctMkdir C:\Users\ganth\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd @lyre/note@0.1.0-alpha.0
+18 verbose afterAdd C:\Users\ganth\AppData\Roaming\npm-cache\@lyre\note\0.1.0-alpha.0\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\ganth\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\ganth\AppData\Roaming\npm-cache\@lyre\note\0.1.0-alpha.0\package\package.json written
+21 silly publish { name: '@lyre/note',
+21 silly publish   version: '0.1.0-alpha.0',
+21 silly publish   description: 'Utilities to deal with musical notes.',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/Attibee/Lyre-Note.git' },
+21 silly publish   keywords: [ 'music', 'note' ],
+21 silly publish   author: { name: 'Anthony Massie' },
+21 silly publish   license: 'Apache-2.0',
+21 silly publish   bugs: { url: 'https://github.com/Attibee/Lyre-Note/issues' },
+21 silly publish   homepage: 'https://github.com/Attibee/Lyre-Note#readme',
+21 silly publish   readme: '# Lyre-Note\nUtilities for dealing with musical notes.\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'cbb7cc9f5206d1bc2a00d383813345d6f8d4cb04',
+21 silly publish   _id: '@lyre/note@0.1.0-alpha.0',
+21 silly publish   _shasum: 'c81a41f4dc9de83b2ea0ec1d2fb62eb49772dcf8',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name @lyre/note
+24 silly mapToRegistry scope (from package name) @lyre
+25 verbose mapToRegistry no registry URL found in name for scope @lyre
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry data Result {
+28 silly mapToRegistry   raw: '@lyre/note',
+28 silly mapToRegistry   scope: '@lyre',
+28 silly mapToRegistry   escapedName: '@lyre%2fnote',
+28 silly mapToRegistry   name: '@lyre/note',
+28 silly mapToRegistry   rawSpec: '',
+28 silly mapToRegistry   spec: 'latest',
+28 silly mapToRegistry   type: 'tag' }
+29 silly mapToRegistry uri https://registry.npmjs.org/@lyre%2fnote
+30 verbose publish registryBase https://registry.npmjs.org/
+31 silly publish uploading C:\Users\ganth\AppData\Roaming\npm-cache\@lyre\note\0.1.0-alpha.0\package.tgz
+32 verbose request uri https://registry.npmjs.org/@lyre%2fnote
+33 verbose request sending authorization for write operation
+34 info attempt registry request try #1 at 10:46:20 PM
+35 verbose request using bearer token for auth
+36 verbose request id 2bcc062961f452e9
+37 http request PUT https://registry.npmjs.org/@lyre%2fnote
+38 http 402 https://registry.npmjs.org/@lyre%2fnote
+39 verbose headers { 'content-type': 'application/json',
+39 verbose headers   'cache-control': 'max-age=0',
+39 verbose headers   'content-length': '119',
+39 verbose headers   'accept-ranges': 'bytes',
+39 verbose headers   date: 'Sat, 10 Jun 2017 02:46:24 GMT',
+39 verbose headers   via: '1.1 varnish',
+39 verbose headers   connection: 'keep-alive',
+39 verbose headers   'x-served-by': 'cache-ord1744-ORD',
+39 verbose headers   'x-cache': 'MISS',
+39 verbose headers   'x-cache-hits': '0',
+39 verbose headers   'x-timer': 'S1497062784.908733,VS0,VE1008' }
+40 verbose request invalidating C:\Users\ganth\AppData\Roaming\npm-cache\registry.npmjs.org\_40lyre_252fnote on PUT
+41 error publish Failed PUT 402
+42 verbose stack Error: You need a paid account to perform this action. For more info, visit: https://www.npmjs.com/private-modules : @lyre/note
+42 verbose stack     at makeError (C:\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+42 verbose stack     at CachingRegistryClient.<anonymous> (C:\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:290:14)
+42 verbose stack     at Request._callback (C:\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+42 verbose stack     at Request.self.callback (C:\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
+42 verbose stack     at emitTwo (events.js:106:13)
+42 verbose stack     at Request.emit (events.js:191:7)
+42 verbose stack     at Request.<anonymous> (C:\nodejs\node_modules\npm\node_modules\request\request.js:1048:10)
+42 verbose stack     at emitOne (events.js:96:13)
+42 verbose stack     at Request.emit (events.js:188:7)
+42 verbose stack     at IncomingMessage.<anonymous> (C:\nodejs\node_modules\npm\node_modules\request\request.js:969:12)
+43 verbose statusCode 402
+44 verbose pkgid @lyre/note
+45 verbose cwd C:\Users\ganth\Programming\AttibeeJS\Lyre-Note
+46 error Windows_NT 10.0.15063
+47 error argv "C:\\nodejs\\node.exe" "C:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+48 error node v6.11.0
+49 error npm  v3.10.10
+50 error code E402
+51 error You need a paid account to perform this action. For more info, visit: https://www.npmjs.com/private-modules : @lyre/note
+52 error If you need help, you may report this error at:
+52 error     <https://github.com/npm/npm/issues>
+53 verbose exit [ 1, true ]
