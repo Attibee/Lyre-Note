@@ -1,3 +1,3 @@
-import {default as Note} from './src/note.js'
+import {default as Note} from './src/Note'
 
 export default Note
