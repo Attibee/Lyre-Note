@@ -1,7 +1,14 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+var expect  = require("chai").expect;
+var Note    = require("../src/Note.js");
 
-
+describe("Note", function() {
+    it("creates all notes", function() {
+        var notes = ['Ab', 'A', 'A#', 'Bb', 'B', 'C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#'];
+        
+        for(let note of notes) {
+            var n = new Note(note);
+            
+            expect(n.toString()).to.equal(note);
+        }
+    });
+});
