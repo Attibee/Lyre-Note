@@ -17,3 +17,9 @@ var myNote = new Note('Ab');
 myNote.getSharp(); //return G#
 myNote.getInterval(2); //returns whole step above
 ```
+
+## Test
+
+From the root directory
+
+`npm run test`
