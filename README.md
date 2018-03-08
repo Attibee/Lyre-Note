@@ -9,13 +9,14 @@ Utilities for validating and creating music notes.
 ## Usage
 
 ```javascript
-import Note from '@lyre/note'
+var Note = require('@lyre/note');
 
 //create a note
-var myNote = new Note('Ab');
+var myNote = new Note('Db');
 
-myNote.getSharp(); //return G#
-myNote.getInterval(2); //returns whole step above
+myNote.getSharp(); //return C#
+myNote.transpose(2); //transposes a whole step up to Eb
+myNote.transpose(-2); //transposes a whole step down to B
 ```
 
 ## Test

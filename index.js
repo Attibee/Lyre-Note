@@ -1,3 +1,3 @@
-import {default as Note} from './src/Note'
+'use strict';
 
-export default Note
+module.exports = require("./src/Note.js");

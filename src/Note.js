@@ -51,11 +51,19 @@ module.exports = class Note {
             throw "Invalid note.";
         }
     }
-
+    
+    /**
+     * Returns true if the note is sharp.
+     * @returns {Boolean} True if the note is sharp.
+     */
     isSharp() {
         return this.note.charAt(1) === '#';
     }
     
+    /**
+     * Returns true if note is flat.
+     * @returns {Boolean} True if the note is flat.
+     */
     isFlat() {
         return this.note.charAt(1) === 'b';
     }
@@ -99,23 +107,47 @@ module.exports = class Note {
     }
     
     /**
-     * Gets a new Note object at the specified interval.
-     * @param {int} halfSteps The amount of half steps. Must be 0 or larger.
+     * Gets a new Note transposed to the specificed half steps. If the current
+     * note is flat, it returns flat, otherwise sharp is returned.
+     * @param {int} halfSteps The amount of half steps. Negative numbers
+     * transpose down, positives transpose up.
      * @return {Note} If the current note is flat, it will return a flat note,
      * else sharp is returned.
      */
-    getInterval(halfSteps) {
+    getTransposition(halfSteps) {
         var currentIndex = this.notes[this.note];
 
         var index = (currentIndex + halfSteps) % 12;
-
+        
+        //overflow negative indexes
+        if(index < 0) {
+            index = 12 + index;
+        }
+        
         if(this.isFlat()) {
             return new Note(this.indexToFlat[index]);
         } else {
             return new Note(this.indexToSharp[index]);
         }
     }
-
+    
+    /**
+     * Transposes the current note to the specified half steps. If the current
+     * note is flat, it returns flat, otherwise sharp is returned.
+     * @param {integer} halfSteps The amount of half steps. Negative numbers
+     * transpose down, positives transpose up.
+     * @returns {Note} Returns self.
+     */
+    transpose(halfSteps) {
+       this.setNote(this.getTransposition(halfSteps).toString());
+       
+       return this;
+    }
+    
+    /**
+     * Converst the Note to its string.
+     * @returns {String} The note string.
+     */
     toString() {
         return this.note;
     }
