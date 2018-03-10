@@ -3,34 +3,13 @@
 /**
  * Handles the creation and manipulationg of Western music notes.
  */
-module.exports = class Note {
+class Note {
     /**
      * Sets the note from a string. Case insensitive.
      * @param {string} note Case insensitive note string such as C, Ab and G#.
      * @throw {InvalidNote} If the note string is invalid.
      */
     constructor(note) {
-        /**
-         * Lookup table to convert notes to their positional index.
-         */
-        this.notes = {
-            'A': 0, 'A#': 1, 'Bb': 1, 'B': 2, 'C': 3, 'C#': 4, 'Db': 4
-            , 'D': 5, 'D#': 6, 'Eb': 6, 'E': 7, 'F': 8, 'F#': 9, 'Gb': 9
-            , 'G': 10, 'G#': 11, 'Ab': 11
-        };
-        
-        /**
-         * Lookup table to convert sharp note position to note.
-         */
-        this.indexToSharp = {0: 'A', 1: 'A#', 2: 'B', 3: 'C', 4: 'C#', 5: 'D'
-            , 6: 'D#', 7: 'E', 8: 'F', 9: 'F#', 10: 'G', 11: 'G#'}; 
-        
-        /**
-         * Lookup table to convert flat note position to note.
-         */
-        this.indexToFlat = {0: 'A', 1: 'Bb', 2: 'B', 3: 'C', 4: 'Db', 5: 'D'
-            , 6: 'Eb', 7: 'E', 8: 'F', 9: 'Gb', 10: 'G', 11: 'Ab'}; 
-        
         this.setNote(note);
     }
     
@@ -40,6 +19,10 @@ module.exports = class Note {
      * @throw {InvalidNote} If the note string is invalid.
      */
     setNote(note) {
+        if(typeof note !== "string") {
+            throw "Expected note parameter to be string";
+        }
+        
         var letter = note.charAt(0).toUpperCase();
         var accidental = note.charAt(1).toLowerCase();
         
@@ -75,7 +58,8 @@ module.exports = class Note {
      * @return {boolean} True if the note is valid, else false.
      */
     isValid(note) {
-        return this.notes.hasOwnProperty(note);
+        
+        return Note._notes.hasOwnProperty(note);
     }
     
     /**
@@ -83,9 +67,9 @@ module.exports = class Note {
      * @return {string} The flat note.
      */
     getFlat() {
-        var index = this.notes[this.note]; //get index from lookup table
+        var index = Note._notes[this.note]; //get index from lookup table
         
-        return this.indexToFlat[index];
+        return Note._indexToFlat[index];
     }
     
     /**
@@ -93,9 +77,9 @@ module.exports = class Note {
      * @return {string} The sharp note.
      */
     getSharp() {
-        var index = this.notes[this.note];
+        var index = Note._notes[this.note];
         
-        return this.indexToSharp[index];
+        return Note._indexToSharp[index];
     }
     
     /**
@@ -109,13 +93,12 @@ module.exports = class Note {
     /**
      * Gets a new Note transposed to the specificed half steps. If the current
      * note is flat, it returns flat, otherwise sharp is returned.
-     * @param {int} halfSteps The amount of half steps. Negative numbers
-     * transpose down, positives transpose up.
+     * @param {int} halfSteps The amount of half steps. Negative numbers transpose down, positives transpose up.
      * @return {Note} If the current note is flat, it will return a flat note,
      * else sharp is returned.
      */
     getTransposition(halfSteps) {
-        var currentIndex = this.notes[this.note];
+        var currentIndex = Note._notes[this.note];
 
         var index = (currentIndex + halfSteps) % 12;
         
@@ -125,17 +108,16 @@ module.exports = class Note {
         }
         
         if(this.isFlat()) {
-            return new Note(this.indexToFlat[index]);
+            return new Note(Note._indexToFlat[index]);
         } else {
-            return new Note(this.indexToSharp[index]);
+            return new Note(Note._indexToSharp[index]);
         }
     }
     
     /**
      * Transposes the current note to the specified half steps. If the current
      * note is flat, it returns flat, otherwise sharp is returned.
-     * @param {integer} halfSteps The amount of half steps. Negative numbers
-     * transpose down, positives transpose up.
+     * @param {integer} halfSteps The amount of half steps. Negative numbers transpose down, positives transpose up.
      * @returns {Note} Returns self.
      */
     transpose(halfSteps) {
@@ -152,3 +134,29 @@ module.exports = class Note {
         return this.note;
     }
 };
+
+/**
+ * Lookup table to convert notes to their positional index.
+ * @access private
+ */
+Note._notes = {
+    'A': 0, 'A#': 1, 'Bb': 1, 'B': 2, 'C': 3, 'C#': 4, 'Db': 4
+    , 'D': 5, 'D#': 6, 'Eb': 6, 'E': 7, 'F': 8, 'F#': 9, 'Gb': 9
+    , 'G': 10, 'G#': 11, 'Ab': 11
+};
+      
+/**
+ * Lookup table to convert sharp note position to note.
+ * @access private
+ */
+Note._indexToSharp = {0: 'A', 1: 'A#', 2: 'B', 3: 'C', 4: 'C#', 5: 'D'
+    , 6: 'D#', 7: 'E', 8: 'F', 9: 'F#', 10: 'G', 11: 'G#'}; 
+
+/**
+ * Lookup table to convert flat note position to note.
+ * @access private
+ */
+Note._indexToFlat = {0: 'A', 1: 'Bb', 2: 'B', 3: 'C', 4: 'Db', 5: 'D'
+    , 6: 'Eb', 7: 'E', 8: 'F', 9: 'Gb', 10: 'G', 11: 'Ab'}; 
+        
+module.exports = Note;
