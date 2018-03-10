@@ -1,5 +1,7 @@
 'use strict';
 
+var InvalidNote = require('./Exception/InvalidNote.js');
+
 /**
  * Handles the creation and manipulationg of Western music notes.
  */
@@ -20,7 +22,7 @@ class Note {
      */
     setNote(note) {
         if(typeof note !== "string") {
-            throw "Expected note parameter to be string";
+            throw new InvalidNote("Expected note parameter to be string");
         }
         
         var letter = note.charAt(0).toUpperCase();
@@ -31,7 +33,7 @@ class Note {
         if(this.isValid(note)) {
             this.note = note;
         } else {
-            throw "Invalid note.";
+            throw new InvalidNote(note + " is not a real note.");
         }
     }
     
