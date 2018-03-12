@@ -19,6 +19,10 @@ myNote.transpose(2); //transposes a whole step up to Eb
 myNote.transpose(-2); //transposes a whole step down to B
 ```
 
+## API
+
+[Visit the api documentation.](https://github.com/Attibee/Lyre-Note/wiki/Note-API)
+
 ## Test
 
 From the root directory
