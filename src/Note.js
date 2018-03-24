@@ -53,8 +53,8 @@ class Note {
     }
     
     /**
-     * Sets the nth octave of the note.
-     * @param {integer} n The octave integer, such as C4 for middle C.
+     * Gets the note's octave.
+     * @returns {integer} The octave integer, such as C4 for middle C.
      */
     getOctave() {
         return this.octave;
