@@ -25,16 +25,39 @@ class Note {
             throw new InvalidNote("Expected note parameter to be string");
         }
         
-        var letter = note.charAt(0).toUpperCase();
-        var accidental = note.charAt(1).toLowerCase();
+        var matches = note.match(/^([a-gA-G])(b|B|#)?(\d+)?$/);
         
-        note = letter + accidental;
-        
-        if(this.isValid(note)) {
-            this.note = note;
-        } else {
-            throw new InvalidNote(note + " is not a real note.");
+        if(!matches) {
+            throw new InvalidNote(note + " is not a real note.");    
         }
+        
+        var letter = matches[1].toUpperCase();
+        
+        //add accidental
+        if(matches[2]) {
+            var accidental = matches[2];
+        } else {
+            var accidental = "";
+        }
+        
+        this.note = letter + accidental;
+        this.octave = matches[3];
+    }
+    
+    /**
+     * Sets the nth octave of the note.
+     * @param {integer} n The octave integer, such as C4 for middle C.
+     */
+    setOctave(n) {
+        this.octave = parseInt(n);
+    }
+    
+    /**
+     * Sets the nth octave of the note.
+     * @param {integer} n The octave integer, such as C4 for middle C.
+     */
+    getOctave() {
+        return this.octave;
     }
     
     /**
