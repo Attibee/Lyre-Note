@@ -7,12 +7,17 @@ var InvalidNote = require('./Exception/InvalidNote.js');
  */
 class Note {
     /**
-     * Sets the note from a string. Case insensitive.
-     * @param {string} note Case insensitive note string such as C, Ab and G#.
-     * @throw {InvalidNote} If the note string is invalid.
+     * Sets the note from a string.
+     * @param {string} note Valid note string such as C, Ab and G#.
+     * @param {integer} [octave] Integer of the octave, optional. 
+     * @throw {InvalidNote} If the note is invalid.
      */
-    constructor(note) {
+    constructor(note, octave = null) {
         this.setNote(note);
+        
+        if(octave) {
+            this.setOctave(octave);
+        }
     }
     
     /**
@@ -21,27 +26,11 @@ class Note {
      * @throw {InvalidNote} If the note string is invalid.
      */
     setNote(note) {
-        if(typeof note !== "string") {
-            throw new InvalidNote("Expected note parameter to be string");
+        if(!this._notes.hasOwnProperty(note)) {
+            throw new InvalidNote(note + " is not a valid note");    
         }
         
-        var matches = note.match(/^([a-gA-G])(b|B|#)?(\d+)?$/);
-        
-        if(!matches) {
-            throw new InvalidNote(note + " is not a real note.");    
-        }
-        
-        var letter = matches[1].toUpperCase();
-        
-        //add accidental
-        if(matches[2]) {
-            var accidental = matches[2];
-        } else {
-            var accidental = "";
-        }
-        
-        this.note = letter + accidental;
-        this.octave = matches[3];
+        this.note = note;
     }
     
     /**
@@ -57,6 +46,10 @@ class Note {
      * @param {integer} n The octave integer, such as C4 for middle C.
      */
     setOctave(n) {
+        if(typeof n !== "number" && !n.isInteger()) {
+            throw new InvalidNote("Expected octave to be an integer"); 
+        }
+        
         this.octave = parseInt(n);
     }
     
