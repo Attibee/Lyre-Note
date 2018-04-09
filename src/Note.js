@@ -158,14 +158,6 @@ class Note {
        
        return this;
     }
-    
-    /**
-     * Converst the Note to its string.
-     * @returns {String} The note string.
-     */
-    toString() {
-        return this.note;
-    }
 };
 
 /**
