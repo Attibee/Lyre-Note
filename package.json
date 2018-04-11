@@ -1,7 +1,7 @@
 {
   "name": "@lyre/note",
-  "version": "1.2.0",
-  "description": "Utilities to deal with musical notes.",
+  "version": "2.0.0",
+  "description": "Utilities to express, parse and output musical notes in Scientific and Helmholtz formats.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
@@ -24,7 +24,6 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "jsdoc": "^3.5.5",
-    "mocha": "^5.0.4",
-    "sinon-chai": "^3.0.0"
+    "mocha": "^5.0.4"
   }
 }
