@@ -8,6 +8,7 @@ Utilities for validating and creating music notes.
 
 ## Usage
 
+### Basic usage
 
 ```javascript
 var Note = require('@lyre/note');
@@ -20,6 +21,8 @@ myNote.transpose(2); //transposes a whole step up to Eb
 myNote.transpose(-2); //transposes a whole step down to B
 ```
 
+### Parsing
+
 ```javascript
 var Parse = require("@lyre/note").Parse;
 
@@ -27,12 +30,14 @@ var myScientificNote = Parse("C4"); //create middle C in scientific notation
 var myHelmholtzNote = Parse("c'", Parse.HELMHOLTZ); //create middle C in helmholtz notation
 ```
 
+### Stringifying note objects
+
 ```javascript
 var Stringify = require("@lyre/note").Stringify;
 var Parse = require("@lyre/note").Parse;
 
 var myNote = Parse("C4"); //create middle C in scientific notation
-console.log( Stringify(myNote, Stringify.HELMHOLTZ ) );
+console.log( Stringify( myNote, Stringify.HELMHOLTZ ) ); //then output in helmholtz notation
 ```
 
 ## API
