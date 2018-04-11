@@ -37,7 +37,7 @@ var Stringify = require("@lyre/note").Stringify;
 var Parse = require("@lyre/note").Parse;
 
 var myNote = Parse("C4"); //create middle C in scientific notation
-console.log( Stringify(myNote, Stringify.HELMHOLTZ ) ); //then output in helmholtz notation
+console.log( Stringify( myNote, Stringify.HELMHOLTZ ) ); //then output in helmholtz notation
 ```
 
 ## API
