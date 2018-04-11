@@ -1,6 +1,6 @@
 # Lyre Note
 
-Utilities for validating and creating music notes.
+Utilities to manipulate, parse and output musical notes. Lyre Note is able to perform common manipulations such as transposition of notes and conversion between sharps and flats. Parsing and stringifying natively support Scientific and Helmholtz notations and conversion between the two.
 
 ## Installation
 
