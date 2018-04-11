@@ -8,7 +8,7 @@ Utilities for validating and creating music notes.
 
 ## Usage
 
-### Note usage
+### Basic usage
 
 ```javascript
 var Note = require('@lyre/note');
@@ -21,7 +21,7 @@ myNote.transpose(2); //transposes a whole step up to Eb
 myNote.transpose(-2); //transposes a whole step down to B
 ```
 
-## Parsing
+### Parsing
 
 ```javascript
 var Parse = require("@lyre/note").Parse;
