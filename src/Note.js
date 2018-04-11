@@ -14,10 +14,7 @@ class Note {
      */
     constructor(note, octave = null) {
         this.setNote(note);
-        
-        if(octave) {
-            this.setOctave(octave);
-        }
+        this.setOctave(octave);
     }
     
     /**
@@ -26,7 +23,7 @@ class Note {
      * @throw {InvalidNote} If the note string is invalid.
      */
     setNote(note) {
-        if(!this._notes.hasOwnProperty(note)) {
+        if(!Note._notes.hasOwnProperty(note)) {
             throw new InvalidNote(note + " is not a valid note");    
         }
         
@@ -46,11 +43,11 @@ class Note {
      * @param {integer} n The octave integer, such as C4 for middle C.
      */
     setOctave(n) {
-        if(typeof n !== "number" && !n.isInteger()) {
-            throw new InvalidNote("Expected octave to be an integer"); 
+        if(n !== null && !Number.isInteger(n)) {
+            throw new InvalidNote("Expected octave to be an integer or null"); 
         }
         
-        this.octave = parseInt(n);
+        this.octave = n;
     }
     
     /**
