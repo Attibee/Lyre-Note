@@ -52,4 +52,14 @@ describe("Note", function() {
             expect(new Note('B').getTransposition(26)).to.have.note('C#');
         });
     });
+    
+    describe("converts accidentals", function() {
+        it("converts sharp to flat", function() {
+            expect(new Note('C#').getFlat()).to.equal("Db");
+        });
+        
+        it("converts flat to sharp", function() {
+            expect(new Note('Db').getSharp()).to.equal("C#");
+        });
+    });
 });
