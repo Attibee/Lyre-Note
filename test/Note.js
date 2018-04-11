@@ -1,8 +1,11 @@
 'use strict';
 
-var expect  = require("chai").expect;
+var chai = require("chai");
+var expect  = chai.expect;
 var Note    = require("../src/Note.js");
 var InvalidNote = require("../index.js").InvalidNote;
+
+chai.use( require("./utils.js") );
 
 describe("Note", function() {
     describe("set notes", function() {
@@ -23,26 +26,26 @@ describe("Note", function() {
     });
     
     describe("transposes notes", function() {
-        var note = new Note('A');
+        var note = new Note('B', 4);
         
         it("transposes upwards", function(){
-            expect(note.getTransposition(2).getNote()).to.equal('B');
+            expect(note.getTransposition(2)).to.have.note('C#').and.octave(5);
         });
         
         it("transposes upwards over octaves", function(){
-            expect(note.getTransposition(26).getNote()).to.equal('B');
+            expect(note.getTransposition(26)).to.have.note('C#').and.octave(7);
         });
-        
+
         it("transposes downwards", function(){
-            expect(note.getTransposition(-2).getNote()).to.equal('G');
+            expect(note.getTransposition(-2)).to.have.note('A').and.octave(4);
         });
         
         it("transposes downwards over octaves", function(){
-            expect(note.getTransposition(-26).getNote()).to.equal('G');
+            expect(note.getTransposition(-26)).to.have.note('A').and.octave(2);
         });
         
         it("transposes self", function() {
-            expect(note.transpose(26).getNote()).to.equal('B');
+            expect(note.transpose(26)).to.have.note('C#').and.octave(7);
         });
     });
 });
