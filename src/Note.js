@@ -122,8 +122,8 @@ class Note {
      */
     getTransposition(halfSteps) {
         var currentIndex = Note._notes[this.note];
-
         var index = (currentIndex + halfSteps) % 12;
+        var note, octave = null;
         
         //overflow negative indexes
         if(index < 0) {
@@ -131,10 +131,17 @@ class Note {
         }
         
         if(this.isFlat()) {
-            return new Note(Note._indexToFlat[index]);
+            note = Note._indexToFlat[index];
         } else {
-            return new Note(Note._indexToSharp[index]);
+            note = Note._indexToSharp[index];
         }
+        
+        //only transpose octaves if we have an octave
+        if(Number.isInteger(this.getOctave())) {
+            octave = this.getOctave() + Math.floor((currentIndex + halfSteps) / 12);
+        }
+        
+        return new Note(note, octave);
     }
     
     /**
@@ -144,9 +151,12 @@ class Note {
      * @returns {Note} Returns self.
      */
     transpose(halfSteps) {
-       this.setNote(this.getTransposition(halfSteps).toString());
-       
-       return this;
+        var transNote = this.getTransposition(halfSteps);
+        
+        this.setNote(transNote.getNote());
+        this.setOctave(transNote.getOctave());
+        
+        return this;
     }
 };
 
@@ -155,23 +165,27 @@ class Note {
  * @access private
  */
 Note._notes = {
-    'A': 0, 'A#': 1, 'Bb': 1, 'B': 2, 'C': 3, 'C#': 4, 'Db': 4
-    , 'D': 5, 'D#': 6, 'Eb': 6, 'E': 7, 'F': 8, 'F#': 9, 'Gb': 9
-    , 'G': 10, 'G#': 11, 'Ab': 11
+    'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3, 'E': 4
+    , 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8, 'Ab': 9, 'A': 9
+    , 'A#': 10, 'Bb': 10, 'B': 11
 };
       
 /**
  * Lookup table to convert sharp note position to note.
  * @access private
  */
-Note._indexToSharp = {0: 'A', 1: 'A#', 2: 'B', 3: 'C', 4: 'C#', 5: 'D'
-    , 6: 'D#', 7: 'E', 8: 'F', 9: 'F#', 10: 'G', 11: 'G#'}; 
+Note._indexToSharp = {
+    0: 'C', 1: 'C#', 2: 'D', 3: 'D#', 4: 'E', 5: 'F', 6: 'F#', 7: 'G'
+    , 8: 'G#', 9: 'A', 10: 'A#', 11: 'B'
+}; 
 
 /**
  * Lookup table to convert flat note position to note.
  * @access private
  */
-Note._indexToFlat = {0: 'A', 1: 'Bb', 2: 'B', 3: 'C', 4: 'Db', 5: 'D'
-    , 6: 'Eb', 7: 'E', 8: 'F', 9: 'Gb', 10: 'G', 11: 'Ab'}; 
+Note._indexToFlat = {
+    0: 'C', 1: 'Db', 2: 'D', 3: 'Eb', 4: 'E', 5: 'F', 6: 'Gb', 7: 'G'
+    , 8: 'Ab', 9: 'A', 10: 'Bb', 11: 'B'
+}; 
         
 module.exports = Note;
