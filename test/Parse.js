@@ -2,8 +2,8 @@
 
 var chai = require("chai");
 var expect = require("chai").expect;
-var Parse = require("../src/Parse.js");
-var Note = require("../src/Note.js");
+var Note = require("../index.js");
+var Parse = Note.Parse;
 
 /**
  * Adds methods note() and octave() to check the value of Note objects note and
