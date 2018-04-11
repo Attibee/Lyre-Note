@@ -6,7 +6,11 @@
  * @returns {string} The note string.
  */
 function scientificStringify(note) {
-    return note.getNote() + note.getOctave();
+    if(Number.isInteger(note.getOctave())) {
+        return note.getNote() + note.getOctave();
+    } else {
+        return note.getNote();
+    }
 }
 
 /**
