@@ -13,7 +13,9 @@
   },
   "keywords": [
     "music",
-    "note"
+    "note",
+    "helmholtz",
+    "transpose"
   ],
   "author": "Attibee",
   "license": "Apache-2.0",
