@@ -20,8 +20,8 @@ describe("Note", function() {
         });
         
         it("excepts on invalid note", function() {
-            expect(function() { new Note('Z') }).to.throw(InvalidNote);
-            expect(function() { new Note() }).to.throw(InvalidNote);
+            expect(function() { new Note('Z'); }).to.throw(InvalidNote);
+            expect(function() { new Note(); }).to.throw(InvalidNote);
         });
     });
     
@@ -46,6 +46,10 @@ describe("Note", function() {
         
         it("transposes self", function() {
             expect(note.transpose(26)).to.have.note('C#').and.octave(7);
+        });
+        
+        it("transposes without octave", function() {
+            expect(new Note('B').getTransposition(26)).to.have.note('C#');
         });
     });
 });
