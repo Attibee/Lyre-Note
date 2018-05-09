@@ -5,21 +5,12 @@ var Note = require("./Note.js");
 
 /**
  * Parses a musical note from string and returns a Note object.
- * @param {string} string
- * @param {function|integer} method Parse.SCIENTIFIC, Parse.HELMHOLTZ or
- *      a user-defined function that returns a Note object and accepts
- *      a string to parse.
+ * @param {string} string The note string to parse.
+ * @param {function} [method=Parse.Scientific] The callback function to parse the string, such as Parse.Scientific or Parse.Helmholtz
  * @returns {Note} The parsed note.
- * @throws {InvalidNote} Throws if note cannot be parsed.
  */
-function Parse(string, method = Parse.SCIENTIFIC) {
-    if(method === Parse.SCIENTIFIC) {
-        return Parse.ScientificParse(string);
-    } else if(method === Parse.HELMHOLTZ) {
-        return Parse.HelmholtzParse(string);
-    } else if(typeof method === "object") {
-        return method(string);
-    }
+function Parse(string, method = Parse.Scientific) {
+    return method(string);
 }
 
 /**
@@ -28,7 +19,7 @@ function Parse(string, method = Parse.SCIENTIFIC) {
  * @returns {Note} The parsed note.
  * @throws {InvalidNote} Throws if note cannot be parsed.
  */
-Parse.ScientificParse = function(string) {
+Parse.Scientific = function(string) {
     var matches = string.match(/^([a-gA-G])(b|B|#)?(\d+)?$/);
 
     if(!matches) {
@@ -53,7 +44,7 @@ Parse.ScientificParse = function(string) {
     }
     
     return new Note(note, octave);
-}
+};
 
 /**
  * Parses a note in Helmholtz format (note letter followed by a prime mark.)
@@ -62,7 +53,7 @@ Parse.ScientificParse = function(string) {
  * @returns {Note} The parsed note.
  * @throws {InvalidNote} Throws if note cannot be parsed.
  */
-Parse.HelmholtzParse = function(string) {
+Parse.Helmholtz = function(string) {
     var matches = string.match(/^([a-gA-G])([b|B|#])?('*|,*)?$/);
 
     if(!matches) {
@@ -94,16 +85,6 @@ Parse.HelmholtzParse = function(string) {
     }
     
     return new Note(note, octave);
-}
-
-/**
- * Scientific notation
- */
-Parse.SCIENTIFIC = 0;
-
-/**
- * Helmholtz notation
- */
-Parse.HELMHOLTZ = 1;
+};
 
 module.exports = Parse;

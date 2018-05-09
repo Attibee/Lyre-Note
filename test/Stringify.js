@@ -8,12 +8,12 @@ var Parse = Note.Parse;
 describe("Stringify", function() {
     describe("stringifies helmholtz", function() {
         it("stringifies all octaves", function() {
-            expect( Stringify( new Note('C', 0), Stringify.HELMHOLTZ ) ).to.equal("C,,");
-            expect( Stringify( new Note('C', 1), Stringify.HELMHOLTZ ) ).to.equal("C,");
-            expect( Stringify( new Note('C', 2), Stringify.HELMHOLTZ ) ).to.equal("C");
-            expect( Stringify( new Note('C', 3), Stringify.HELMHOLTZ ) ).to.equal("c");
-            expect( Stringify( new Note('C', 4), Stringify.HELMHOLTZ ) ).to.equal("c'");
-            expect( Stringify( new Note('C', 5), Stringify.HELMHOLTZ ) ).to.equal("c''");
+            expect( Stringify( new Note('C', 0), Stringify.Helmholtz ) ).to.equal("C,,");
+            expect( Stringify( new Note('C', 1), Stringify.Helmholtz ) ).to.equal("C,");
+            expect( Stringify( new Note('C', 2), Stringify.Helmholtz ) ).to.equal("C");
+            expect( Stringify( new Note('C', 3), Stringify.Helmholtz ) ).to.equal("c");
+            expect( Stringify( new Note('C', 4), Stringify.Helmholtz ) ).to.equal("c'");
+            expect( Stringify( new Note('C', 5), Stringify.Helmholtz ) ).to.equal("c''");
         });
     });
     

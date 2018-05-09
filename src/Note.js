@@ -1,6 +1,7 @@
 'use strict';
 
 var InvalidNote = require('./Exception/InvalidNote.js');
+var Stringify = require('./Stringify.js');
 
 /**
  * Handles the creation and manipulationg of Western music notes.
@@ -157,6 +158,11 @@ class Note {
         this.setOctave(transNote.getOctave());
         
         return this;
+    }
+    
+    toString(method = Stringify.Scientific) {
+        console.log("wat");
+        return method(this);
     }
 };
 
