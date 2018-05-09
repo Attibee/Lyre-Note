@@ -1,4 +1,4 @@
-# Lyre Note
+# Lyre Note 2.1
 
 Utilities to manipulate, parse and output musical notes. Lyre Note is able to perform common manipulations such as transposition of notes and conversion between sharps and flats. Functions Parse and Stringify natively support Scientific and Helmholtz notations and conversion between the two.
 
