@@ -1,4 +1,4 @@
-# Lyre Note
+# Lyre Note 2.1
 
 Utilities to manipulate, parse and output musical notes. Lyre Note is able to perform common manipulations such as transposition of notes and conversion between sharps and flats. Functions Parse and Stringify natively support Scientific and Helmholtz notations and conversion between the two.
 
@@ -26,8 +26,8 @@ myNote.transpose(-2); //transposes a whole step down to B
 ```javascript
 var Parse = require("@lyre/note").Parse;
 
-var myScientificNote = Parse("C4"); //create middle C in scientific notation
-var myHelmholtzNote = Parse("c'", Parse.HELMHOLTZ); //create middle C in helmholtz notation
+var myScientificNote = Parse("C4"); //create middle C in scientific notation, scientific is default
+var myHelmholtzNote = Parse("c'", Parse.Helmholtz); //create middle C in helmholtz notation
 ```
 
 ### Stringifying note objects
@@ -37,7 +37,10 @@ var Stringify = require("@lyre/note").Stringify;
 var Parse = require("@lyre/note").Parse;
 
 var myNote = Parse("C4"); //create middle C in scientific notation
-console.log( Stringify( myNote, Stringify.HELMHOLTZ ) ); //then output in helmholtz notation
+console.log( Stringify( myNote, Stringify.Helmholtz ) ); //then output in helmholtz notation
+
+//note also has a convenience method to stringify
+myNote.toString(Stringify.Helmholtz);
 ```
 
 ## API
