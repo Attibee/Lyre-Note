@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var InvalidNote = require('./Exception/InvalidNote.js');
 var Stringify = require('./Stringify.js');
@@ -161,7 +161,6 @@ class Note {
     }
     
     toString(method = Stringify.Scientific) {
-        console.log("wat");
         return method(this);
     }
 };
