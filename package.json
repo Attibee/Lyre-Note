@@ -1,6 +1,6 @@
 {
   "name": "@lyre/note",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Utilities to express, parse and output musical notes in Scientific and Helmholtz formats.",
   "main": "index.js",
   "scripts": {
